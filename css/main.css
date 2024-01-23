@@ -72,6 +72,21 @@ td {
     font-size: 20px;
 }
 
+.filter-session {
+    background-color: #e5bfff;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-left: 10px;
+    position: sticky;
+    top: 0;
+}
+
+.filter-session-element {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
 .list-of-facilities {
     display: flex;
     flex-wrap: wrap;
