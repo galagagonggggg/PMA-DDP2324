@@ -53,7 +53,10 @@
             </div>
         </div>
         <div class="type-filter-session">
-            <h4 class="detail-header">Filter by Type</h4>
+            <div class="detail-header">
+                <h4>Filter by Type</h4>
+                <img src="image/fast-food.png">
+            </div>
             <p class="detail-description">See the list of facilities filter by each type</p>
             <div class="detail-carousel">
                 <table style="width:100%">
@@ -71,6 +74,54 @@
                     </tr>
                 </table>
             </div>
+            <br></br>
+            <div class="detail-header">
+                <h4>Search Filter</h4>
+                <img src="image/filter.png" class="logo-header"></img>
+            </div>
+            <form>
+                <label for="number of guest">Number of guest</label>
+                <select name="number of guest" id="number of guest">
+                    <option value=>None</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                </select><br></br>
+                <label for="open time">Open time</label>
+                <select name="open day" id="open day">
+                    <option value=>None</option>
+                    <option value="MON">Monday</option>
+                    <option value="TUE">Tuesday</option>
+                    <option value="WED">Wednesday</option>
+                    <option value="THU">Thursday</option>
+                    <option value="FRI">Friday</option>
+                    <option value="SAT">Saturday</option>
+                    <option value="SUN">Sunday</option>
+                </select>
+                <select name="open time" id="open time">
+                    <option value=>None</option>
+                    <option value=9>9 am</option>
+                    <option value=10>10 am</option>
+                    <option value=11>11 am</option>
+                    <option value=12>12 am</option>
+                    <option value=13>1 pm</option>
+                    <option value=14>2 pm</option>
+                    <option value=15>3 pm</option>
+                    <option value=16>4 pm</option>
+                    <option value=17>5 pm</option>
+                    <option value=18>6 pm</option>
+                    <option value=19>7 pm</option>
+                    <option value=20>8 pm</option>
+                    <option value=21>9 pm</option>
+                    <option value=22>10 pm</option>
+                    <option value=23>11 pm</option>
+                    <option value=24>12 pm</option>
+                </select><br></br>
+                <input type="submit" value="Find"
+                    style="background-color: rgb(130, 234, 215);font-size: 15px;border-radius: 10px;"><br></br>
+            </form>
         </div>
     </section>
 </body>
