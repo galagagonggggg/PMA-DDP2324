@@ -4,317 +4,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List of facilities</title>
-    <link rel="stylesheet" href="css/main.css">
+    <title>Warwick's dining facilities detail</title>
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 
 <body>
     <div class="session-header">
-        <h3 class="text-header">Dining on Campus</h3>
-        <img src="image/warwick-logo.png" class="logo-header"></img>
+        <h3 class="text-header">Dining Service</h3>
+        <img src="../image/warwick-logo.png" class="logo-header"></img>
     </div>
-    <div class="session-title"></div>
-    <p>Looking for the recommendation or popular place to eat or drink ? <a href="main.html">Landing Page</a> > <a
-            href="detail.html">Mocked datail page</a></a></p>
-    </div>
-    <div class="filter-session">
-        <h4 class="detail-header">Filter</h4>
-        <form>
-            <div class="filter-session-element">
-                <div class="filter-session-number-of-guest">
-                    <label for="number of guest">Number of guest</label>
-                    <select name="number of guest" id="number of guest">
-                        <option value=>None</option>
-                        <option value=1>1</option>
-                        <option value=2>2</option>
-                        <option value=3>3</option>
-                        <option value=4>4</option>
-                        <option value=5>5</option>
-                    </select>
+    <p><a href="main.html">Landing Page</a> > <a href="list.html">List of Cafe and Restaurant</a></p>
+    <h4 id="detail-facilities-header">{{ details[0][1] }}</h4>
+
+    <div class="detail-facilities-session">
+        <div class="detail-facilities-left-component">
+            <img src="../image/dirtyduck.png" alt="dirty duck logo"></img>
+            <div class="detail-facilities-left-label">
+                <div class="detail-facilities-detail-header">
+                    <h3><b>Contact Information</b></h3>
                 </div>
-                <div class="filter-session-open-time">
-                    <label for="open time">Open time</label>
-                    <select name="open day" id="open day">
-                        <option value=>None</option>
-                        <option value="MON">Monday</option>
-                        <option value="TUE">Tuesday</option>
-                        <option value="WED">Wednesday</option>
-                        <option value="THU">Thursday</option>
-                        <option value="FRI">Friday</option>
-                        <option value="SAT">Saturday</option>
-                        <option value="SUN">Sunday</option>
-                    </select>
-                    <select name="open time" id="open time">
-                        <option value=>None</option>
-                        <option value=9>9 am</option>
-                        <option value=10>10 am</option>
-                        <option value=11>11 am</option>
-                        <option value=12>12 am</option>
-                        <option value=13>1 pm</option>
-                        <option value=14>2 pm</option>
-                        <option value=15>3 pm</option>
-                        <option value=16>4 pm</option>
-                        <option value=17>5 pm</option>
-                        <option value=18>6 pm</option>
-                        <option value=19>7 pm</option>
-                        <option value=20>8 pm</option>
-                        <option value=21>9 pm</option>
-                        <option value=22>10 pm</option>
-                        <option value=23>11 pm</option>
-                        <option value=24>12 pm</option>
-                    </select>
+                <div class="detail-facilities-detail-descripion">
+                    <p>{{ details[0][2] }}</p>
+                    <p>{{ details[0][3] }}</p>
                 </div>
-                <div class="filter-session-student-union">
-                    <label for="student union">Student Union</label>
-                    <select name="student union" id="student union">
-                        <option value=false>No</option>
-                        <option value=true>Yes</option>
-                    </select>
+                <div class="detail-facilities-detail-header">
+                    <h3><b>Open Time</b></h3>
                 </div>
-                <input type="submit" value="Find"
-                    style="background-color: rgb(130, 234, 215);font-size: 15px;border-radius: 10px;">
-            </div>
-        </form>
-    </div>
-    <div class="list-of-facilities">
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
-            </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
+                <div class="detail-facilities-detail-descripion">
+                    <p>Tue-Fri : 8.00 am - 12.00 pm</p>
+                </div>
+                <div class="detail-facilities-detail-header">
+                    <h3><b>Location</b></h3>
+                </div>
+                <div class="detail-facilities-detail-descripion">
+                    <p>{{ details[0][4] }}</p>
+                </div>
             </div>
         </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
+
+        <div class="detail-facilities-center-component">
+            <div class="detail-facilities-detail-header">
+                <h3><b>About</b></h3>
             </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
+            <div class="detail-facilities-detail-descripion">
+                <p>The best restaurant in SU building xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+                <p>The best restaurant in SU building</p>
+                <p>The best restaurant in SU building</p>
             </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
+            <div class="detail-facilities-detail-header">
+                <h3><b>Menu</b></h3>
             </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
+            <div class="detail-facilities-detail-descripion">
+                <p>- Pork 15$</p>
+                <p>- Rice 10$</p>
             </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
+            <div class="detail-facilities-detail-header">
+                <h3><b>Offer</b></h3>
             </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
+            <div class="detail-facilities-detail-descripion">
+                <p>There is no offer now</p>
             </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
+            <div class="detail-facilities-detail-header">
+                <h3><b>Christmas Special</b></h3>
             </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
+            <div class="detail-facilities-detail-descripion">
+                <p>15% on christmas day</p>
             </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
+            <div class="detail-facilities-detail-header">
+                <h3><b>Fixture</b></h3>
             </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
+            <div class="detail-facilities-detail-descripion">
+                <p>Only available on the sport bar</p>
             </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
+            <div class="detail-facilities-detail-header">
+                <h3><b>Booking</b></h3>
             </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
+            <div class="detail-facilities-detail-descripion">
+                <p><a href="#">hyperlink</a></p>
+            </div>
+            <div class="detail-facilities-detail-header">
+                <h3><b>Delivery</b></h3>
+            </div>
+            <div class="detail-facilities-detail-descripion">
+                <p><a href="#">hyperlink</a></p>
             </div>
         </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
+
+        <div class="detail-facilities-right-component">
+            <div class="detail-facilities-detail-header">
+                <h3><b>Picture</b></h3>
             </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
-            </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
-            </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
-            </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
-            </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
-            </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
-            </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
-            </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
-            </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
-            </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
-            </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
-            </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
-            </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
-            </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
-            </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
-            </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
-            </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
-            </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
-            </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
-            </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
-            </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
-            </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
-            </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
-            </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
-            </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
-            </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
-            </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
-            </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
-            </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
-            </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
-            </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
-            </div>
-        </div>
-        <div class="list-of-facilities-item">
-            <div class="list-of-facilities-item-text">
-                <h3>Dirty Duck</h3>
-                <p><b>Description</b> : The best bat in warwick student union building</p>
-                <p><b>Location :</b> Student Union building</p>
-            </div>
-            <div class="list-of-facilities-item-logo">
-                <img src="image/dirtyduck.png" alt="dirty duck"></img>
+            <div class="detail-facilities-detail-descripion">
+                <img src="../image/dirtyduck.png" alt="img 1"></img>
+                <img src="../image/dirtyduck.png" alt="img 2"></img>
             </div>
         </div>
     </div>
