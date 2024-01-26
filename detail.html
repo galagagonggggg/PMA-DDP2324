@@ -5,27 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warwick's dining facilities detail</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 </head>
 
 <body>
     <div class="session-header">
         <h3 class="text-header">Dining Service</h3>
-        <img src="image/warwick-logo.png" class="logo-header"></img>
+        <img src="../image/warwick-logo.png" class="logo-header"></img>
     </div>
     <p><a href="main.html">Landing Page</a> > <a href="list.html">List of Cafe and Restaurant</a></p>
-    <h4 id="detail-facilities-header">Dirty Duck</h4>
+    <h4 id="detail-facilities-header">{{ details[0][1] }}</h4>
 
     <div class="detail-facilities-session">
         <div class="detail-facilities-left-component">
-            <img src="image/dirtyduck.png" alt="dirty duck logo"></img>
+            <img src="../image/dirtyduck.png" alt="dirty duck logo"></img>
             <div class="detail-facilities-left-label">
                 <div class="detail-facilities-detail-header">
                     <h3><b>Contact Information</b></h3>
                 </div>
                 <div class="detail-facilities-detail-descripion">
-                    <p>dirty.duck@warwick.ac.uk</p>
-                    <p>0823459643</p>
+                    <p>{{ details[0][2] }}</p>
+                    <p>{{ details[0][3] }}</p>
                 </div>
                 <div class="detail-facilities-detail-header">
                     <h3><b>Open Time</b></h3>
@@ -37,7 +37,7 @@
                     <h3><b>Location</b></h3>
                 </div>
                 <div class="detail-facilities-detail-descripion">
-                    <p>Student Union Building</p>
+                    <p>{{ details[0][4] }}</p>
                 </div>
             </div>
         </div>
@@ -96,8 +96,8 @@
                 <h3><b>Picture</b></h3>
             </div>
             <div class="detail-facilities-detail-descripion">
-                <img src="image/dirtyduck.png" alt="img 1"></img>
-                <img src="image/dirtyduck.png" alt="img 2"></img>
+                <img src="../image/dirtyduck.png" alt="img 1"></img>
+                <img src="../image/dirtyduck.png" alt="img 2"></img>
             </div>
         </div>
     </div>
