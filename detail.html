@@ -11,33 +11,37 @@
 <body>
     <div class="session-header">
         <h3 class="text-header">Dining Service</h3>
-        <img src="../image/warwick-logo.png" class="logo-header"></img>
+        <img src="{{ url_for('static', filename='warwick-logo.png') }}" class="logo-header"></img>
     </div>
     <p><a href="main.html">Landing Page</a> > <a href="list.html">List of Cafe and Restaurant</a></p>
     <h4 id="detail-facilities-header">{{ details[0][1] }}</h4>
 
     <div class="detail-facilities-session">
         <div class="detail-facilities-left-component">
-            <img src="../image/dirtyduck.png" alt="dirty duck logo"></img>
+            <img src="{{ url_for('static', filename= details[0][13] ) }}" alt="Img"></img>
             <div class="detail-facilities-left-label">
                 <div class="detail-facilities-detail-header">
                     <h3><b>Contact Information</b></h3>
                 </div>
                 <div class="detail-facilities-detail-descripion">
-                    <p>{{ details[0][2] }}</p>
-                    <p>{{ details[0][3] }}</p>
+                    <p>Email : {{ details[0][2] }}</p>
+                    <p>Tel : {{ details[0][3] }}</p>
                 </div>
                 <div class="detail-facilities-detail-header">
                     <h3><b>Open Time</b></h3>
                 </div>
                 <div class="detail-facilities-detail-descripion">
-                    <p>Tue-Fri : 8.00 am - 12.00 pm</p>
+                    {% autoescape false %}
+                    <p>{{ details[0][15] }}</p>
+                    {% endautoescape %}
                 </div>
                 <div class="detail-facilities-detail-header">
                     <h3><b>Location</b></h3>
                 </div>
                 <div class="detail-facilities-detail-descripion">
+                    {% autoescape false %}
                     <p>{{ details[0][4] }}</p>
+                    {% endautoescape %}
                 </div>
             </div>
         </div>
@@ -47,47 +51,74 @@
                 <h3><b>About</b></h3>
             </div>
             <div class="detail-facilities-detail-descripion">
-                <p>The best restaurant in SU building xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                <p>The best restaurant in SU building</p>
-                <p>The best restaurant in SU building</p>
+                {% autoescape false %}
+                <p>{{ details[0][6] }}</p>
+                {% endautoescape %}
             </div>
             <div class="detail-facilities-detail-header">
                 <h3><b>Menu</b></h3>
             </div>
             <div class="detail-facilities-detail-descripion">
-                <p>- Pork 15$</p>
-                <p>- Rice 10$</p>
+                {% autoescape false %}
+                <p>{{ details[0][7] }}</p>
+                {% endautoescape %}
             </div>
             <div class="detail-facilities-detail-header">
                 <h3><b>Offer</b></h3>
             </div>
             <div class="detail-facilities-detail-descripion">
-                <p>There is no offer now</p>
+                {% autoescape false %}
+                {% if details[0][8] is none %}
+                <p style="color:red;">There is no any offer for this facilities now.</p>
+                {% else %}
+                <p>{{ details[0][8] }}</p>
+                {% endif %}
+                {% endautoescape %}
             </div>
             <div class="detail-facilities-detail-header">
                 <h3><b>Christmas Special</b></h3>
             </div>
             <div class="detail-facilities-detail-descripion">
-                <p>15% on christmas day</p>
+                {% autoescape false %}
+                {% if details[0][9] is none %}
+                <p style="color:red;">There is no any Christmas special for this facilities now.</p>
+                {% else %}
+                <p>{{ details[0][9] }}</p>
+                {% endif %}
+                {% endautoescape %}
             </div>
             <div class="detail-facilities-detail-header">
                 <h3><b>Fixture</b></h3>
             </div>
             <div class="detail-facilities-detail-descripion">
-                <p>Only available on the sport bar</p>
+                {% autoescape false %}
+                {% if details[0][10] is none %}
+                <p style="color:red;">The Sport fixture is only available for Sport bar.</p>
+                {% else %}
+                <p>{{ details[0][10] }}</p>
+                {% endif %}
+                {% endautoescape %}
             </div>
             <div class="detail-facilities-detail-header">
                 <h3><b>Booking</b></h3>
             </div>
             <div class="detail-facilities-detail-descripion">
-                <p><a href="#">hyperlink</a></p>
+                {% if details[0][11] is none %}
+                <p style="color:red;">This dinning facilities doesn't allow to book for spaces that allow only walk in
+                    customer.</p>
+                {% else %}
+                <p><a href="#">{{ details[0][11] }}</a></p>
+                {% endif %}
             </div>
             <div class="detail-facilities-detail-header">
                 <h3><b>Delivery</b></h3>
             </div>
             <div class="detail-facilities-detail-descripion">
-                <p><a href="#">hyperlink</a></p>
+                {% if details[0][12] is none %}
+                <p style="color:red;">This dinning facilities doesn't have delivery service.</p>
+                {% else %}
+                <p><a href="#">{{ details[0][12] }}</a></p>
+                {% endif %}
             </div>
         </div>
 
@@ -96,8 +127,22 @@
                 <h3><b>Picture</b></h3>
             </div>
             <div class="detail-facilities-detail-descripion">
-                <img src="../image/dirtyduck.png" alt="img 1"></img>
-                <img src="../image/dirtyduck.png" alt="img 2"></img>
+
+                {% if (details[0][21] == none) and (details[0][22] == none) and (details[0][22] == none) == True %}
+                <img src="{{ url_for('static', filename='warwick-logo.png') }}" class="logo-header"></img>
+                {% endif %}
+
+                {% if details[0][21] != none %}
+                <img src="{{ url_for('static', filename= details[0][21] ) }}" alt="sup img 1"></img><br></br>
+                {% endif %}
+
+                {% if details[0][22] != none %}
+                <img src="{{ url_for('static', filename= details[0][22] ) }}" alt="sup img 2"></img><br></br>
+                {% endif %}
+
+                {% if details[0][23] != none %}
+                <img src="{{ url_for('static', filename= details[0][23] ) }}" alt="sup img 3"></img><br></br>
+                {% endif %}
             </div>
         </div>
     </div>
