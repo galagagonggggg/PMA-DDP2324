@@ -7,7 +7,6 @@ import datetime
 from flask import Flask, render_template, request, url_for, redirect, abort, g
 
 app = Flask("app")
-
 # The database configuration
 DATABASE = os.environ.get("FLASK_DATABASE", "dining.db")
 
@@ -101,10 +100,10 @@ def facilities_list(number_of_guest,open_day,open_time,is_student_union,type_id)
         final_result = result_after_time
     conn.close()
     #for production webpage
-    #return render_template("list.html",dining_type = type, pre_select_guest = number_of_guest, pre_select_day = open_day, pre_select_time = open_time, pre_su = is_student_union)
+    return render_template("list.html",dining_type = type, pre_select_guest = number_of_guest, pre_select_day = open_day, pre_select_time = open_time, pre_su = is_student_union, details = final_result)
     
     #trail for result from each variable
-    return "<h1>{}</h1>".format(final_result)
+    #return "<h1>{}</h1>".format(final_result)
 
 @app.route("/facilities-detail/<int:profile_id>")
 def facilities_detail(profile_id):
@@ -115,5 +114,6 @@ def facilities_detail(profile_id):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
