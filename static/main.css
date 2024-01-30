@@ -94,7 +94,7 @@ td {
 
 .list-of-facilities-item {
     width: 31%;
-    height: 31%;
+    height: 150px;
     background-color: #d7bee8;
     margin-right: 20px;
     margin-top: 20px;
@@ -111,7 +111,9 @@ td {
     margin-top: 20%;
     border-radius: 25%;
     height: 60px;
+    width: 125px;
     margin-right: 10px;
+    left: -10px;
 }
 
 #detail-facilities-header {
