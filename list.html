@@ -14,8 +14,8 @@
         <img src="{{ url_for('static', filename='warwick-logo.png') }}" class="logo-header"></img>
     </div>
     <div class="session-title"></div>
-    <p>Looking for the recommendation or popular place to eat or drink ? <a href="main.html">Landing Page</a> > <a
-            href="../detail.html">Mocked datail page</a></a></p>
+    <p>Looking for the recommendation or popular place to eat or drink ? <a
+            href="{{ url_for('facilities_landing') }}">Landing Page</a> </p>
     </div>
     <div class="filter-session">
         <h4 class="detail-header">Filter</h4>
@@ -51,7 +51,7 @@
                         <option value="SUN" {% if pre_select_day=="SUN" %}selected{% endif %}>Sunday</option>
                     </select>
                     <select name="open-time" id="open-time">
-                        <option value="99" {% if pre_select_time=="99" %}selected{% endif %}>None</option>
+                        <option value=99 {% if pre_select_time==99 %}selected{% endif %}>None</option>
                         <option value=9 {% if pre_select_time==9 %}selected{% endif %}>9 am</option>
                         <option value=10 {% if pre_select_time==10 %}selected{% endif %}>10 am</option>
                         <option value=11 {% if pre_select_time==11 %}selected{% endif %}>11 am</option>
@@ -87,7 +87,9 @@
         {% for detail in details %}
         <div class="list-of-facilities-item">
             <div class="list-of-facilities-item-text">
-                <h3>{{ detail[1] }}</h3>
+                <a href="{{ url_for('facilities_detail',profile_id=detail[0]) }}">
+                    <h3>{{ detail[1] }}</h3>
+                </a>
                 <p><b>Description :</b> {{ detail[2] }}</p>
                 <p><b>Location :</b> {{ detail[8] }}</p>
             </div>
