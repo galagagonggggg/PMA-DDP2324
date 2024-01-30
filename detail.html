@@ -13,7 +13,9 @@
         <h3 class="text-header">Dining Service</h3>
         <img src="{{ url_for('static', filename='warwick-logo.png') }}" class="logo-header"></img>
     </div>
-    <p><a href="main.html">Landing Page</a> > <a href="list.html">List of Cafe and Restaurant</a></p>
+    <p><a href="{{ url_for('facilities_landing') }}">Landing Page</a> > <a
+            href="{{ url_for('facilities_list',number_of_guest=99,open_day='99',open_time=99,is_student_union='99',type_id=99) }}">List
+            of Cafe and Restaurant</a></p>
     <h4 id="detail-facilities-header">{{ details[0][1] }}</h4>
 
     <div class="detail-facilities-session">
