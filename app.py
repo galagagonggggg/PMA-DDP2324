@@ -27,6 +27,7 @@ def hello():
     """Return some friendly text."""
     return "Hello, World!"  
 
+# for testing connection only
 @app.route("/index_v2/<int:profile_id>")
 def index_v2(profile_id):
     conn = get_db_connection()
@@ -34,10 +35,69 @@ def index_v2(profile_id):
     conn.close()
     return "<h1>{}</h1>".format(supps)
 
+# Landing screen
+# Main functionalities as facilities recommendation, popular, filter by type, and search filter
+@app.route("/facilities-landing", methods=("GET", "POST"))
+def facilities_landing():
+
+    conn = get_db_connection()
+    if request.method == "POST":
+        type = "all"
+        is_student_union = "99"
+        number_of_guest = int(request.form['number-of-guest'])
+        open_day = request.form['open-day']
+        open_time = int(request.form['open-time'])
+        result_after_guest=[]
+        result_after_type=[]
+        result_after_type_dup_validation = {}
+        result_after_type_stage = []
+        final_result = []
+        filter_list = conn.execute("SELECT tbl_dining_profile.profile_id, name, short_description, picture, type_id, open_day_time_list, number_of_guest, is_student_union, location FROM tbl_dining_profile RIGHT JOIN tbl_dining_type_mapping ON tbl_dining_profile.profile_id = tbl_dining_type_mapping.profile_id").fetchall()
+        
+        # filter number of guest (first query parameter)     
+        if number_of_guest != 99:
+            result_after_guest = [i for i in filter_list if i[6] == number_of_guest]
+        else:
+            result_after_guest = filter_list
+
+        #remove duplication in case 1 profile_id have multiple type_id
+        for i in result_after_guest:
+            if i[0] not in result_after_type_dup_validation:
+                result_after_type_stage.append(i)
+                result_after_type_dup_validation[i[0]] = True
+        result_after_type = result_after_type_stage
+
+        # filter open day date (second and third query parameter)
+        if open_day != "99":
+            for i in result_after_type:
+                if open_day in json.loads(i[5]):
+                    if open_time != 99:
+                        day_date_dict = json.loads(i[5])
+                        if day_date_dict[open_day][0] <= open_time <= day_date_dict[open_day][1]:
+                                final_result.append(i)
+                    else:
+                        final_result.append(i)
+        else:
+            final_result = result_after_type
+        conn.close()
+        # for production webpage
+        return render_template("list.html",dining_type = type, pre_select_guest = number_of_guest, pre_select_day = open_day, pre_select_time = open_time, pre_su = is_student_union, details = final_result)
+
+    else:
+    # connect to database and query data from table
+        boolean_value = "True"
+        recommend_result = conn.execute("SELECT profile_id, name, picture FROM tbl_dining_profile WHERE is_recommend = ?",(boolean_value,)).fetchall()
+        popular_result = conn.execute("SELECT profile_id, name, picture, is_food_popular FROM tbl_dining_profile WHERE is_popular = ?",(boolean_value,)).fetchall()
+        type_list = conn.execute("SELECT type_id, type_name FROM tbl_dining_type").fetchall()
+        conn.close()
+        return render_template("main.html",recommends = recommend_result, populars = popular_result, types = type_list)
+
+# Facilities list screen
+# Main functionalities as filter
 @app.route("/facilities-list/<int:number_of_guest>/<string:open_day>/<int:open_time>/<string:is_student_union>/<int:type_id>",methods=("GET", "POST"))
 def facilities_list(number_of_guest,open_day,open_time,is_student_union,type_id):
 
-    #connect to database and query data from table
+    # connect to database and query data from table
     conn = get_db_connection()
     type = conn.execute("SELECT type_name FROM tbl_dining_type WHERE type_id = ?",(type_id,)).fetchall()
     result_after_guest=[]
@@ -96,14 +156,18 @@ def facilities_list(number_of_guest,open_day,open_time,is_student_union,type_id)
     else:
         final_result = result_after_time
     conn.close()
-    #for production webpage
+    # for production webpage
     return render_template("list.html",dining_type = type, pre_select_guest = number_of_guest, pre_select_day = open_day, pre_select_time = open_time, pre_su = is_student_union, details = final_result)
     
-    #trail for result from each variable
-    #return "<h1>{}</h1>".format(final_result)
+    # trail for result from each variable as a list of tuple
+    # return "<h1>{}</h1>".format(final_result)
 
+# Facilities details screen
+# Main functionalities as display detail of each facilities
 @app.route("/facilities-detail/<int:profile_id>")
 def facilities_detail(profile_id):
+
+    # connect to database and query data from table
     conn = get_db_connection()
     supps = conn.execute("SELECT * FROM tbl_dining_profile WHERE profile_id = ?",(profile_id,)).fetchall()
     conn.close()
@@ -111,5 +175,7 @@ def facilities_detail(profile_id):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
 
 
