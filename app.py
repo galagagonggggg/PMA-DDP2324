@@ -164,14 +164,42 @@ def facilities_list(number_of_guest,open_day,open_time,is_student_union,type_id)
 
 # Facilities details screen
 # Main functionalities as display detail of each facilities
-@app.route("/facilities-detail/<int:profile_id>")
+@app.route("/facilities-detail/<int:profile_id>", methods=("GET", "POST"))
 def facilities_detail(profile_id):
 
     # connect to database and query data from table
     conn = get_db_connection()
+    
+    # For future release : customer review feature
+    if request.method == "POST":
+            insert_supps = conn.execute(
+                "INSERT INTO tbl_customer_review (profile_id, name, description, rating) VALUES (?,?,?,?)",
+                (
+                    profile_id,
+                    request.form['username'],
+                    request.form['description'],
+                    request.form['rating'],
+                ),
+            )
+            conn.commit()
+    
+    # for retrieve list of detail config by profile_id
     supps = conn.execute("SELECT * FROM tbl_dining_profile WHERE profile_id = ?",(profile_id,)).fetchall()
+
+    # for retrieve the customer review information
+    reviews = conn.execute("SELECT * FROM tbl_customer_review WHERE profile_id = ?",(profile_id,)).fetchall()
+
+    # logic for calculate the average rating on each profile_id
+    sum = 0
+    if len(reviews) != 0:
+        number = len(reviews)
+        for i in reviews:
+            sum += i[4]
+        average_rating = round(sum/number,2)
+    else:
+        average_rating = 0
     conn.close()
-    return render_template("detail.html", details = supps)
+    return render_template("detail.html", details = supps, reviews = reviews, average_rating = average_rating)
 
 if __name__ == "__main__":
     app.run(debug=True)
