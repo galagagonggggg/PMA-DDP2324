@@ -148,6 +148,49 @@
             </div>
         </div>
     </div>
+    <br>
+    <div class="detail-facilities-customer-review-session">
+        <h4 id="detail-facilities-customer-review-header">Customer Review : 4 <img
+                src="{{ url_for('static', filename='star.png' ) }}" alt="star img"></img></h4>
+        <div class="detail-facilities-customer-review-session-detail-list">
+            <h5 style="font-size: 15px; margin-left: 10px; margin-bottom: -20px;">Username : Gongggg</h5>
+            <h6 style="font-size: 15px; margin-left: 10px; margin-bottom: 5px;"> Rating 4 <img
+                    src="{{ url_for('static', filename='star.png' ) }}" alt="star img"></img></h6>
+            <p style="font-size: 15px; margin-left: 10px; margin-bottom: 5px;"><b>Description :</b> This is the best
+                restaurant in warwick I have ever seen in my life haha</p><br>
+        </div>
+        <div class="detail-facilities-customer-review-session-detail-list">
+            <h5 style="font-size: 15px; margin-left: 10px; margin-bottom: -20px;">Username : Gongggg</h5>
+            <h6 style="font-size: 15px; margin-left: 10px; margin-bottom: 5px;"> Rating 4 <img
+                    src="{{ url_for('static', filename='star.png' ) }}" alt="star img"></img></h6>
+            <p style="font-size: 15px; margin-left: 10px; margin-bottom: 5px;"><b>Description :</b> This is the best
+                restaurant in warwick I have ever seen in my life haha</p><br>
+        </div>
+        <h4 style="font-size: 25px; margin-left: 10px; margin-bottom: 10px;">Give Feedback</h4>
+        <form>
+            <label for="username" style="font-size: 15px; margin-left: 15px; margin-bottom: 15px;">Username</label>
+            <br>
+            <input type="text" name="username" placeholder="Name" value="{{ request.form['username'] }}"
+                style="font-size: 15px; margin-left: 15px; margin-bottom: 10px;"></input>
+            <br>
+            <label for="description" placeholder="Type description here"
+                style="font-size: 15px; margin-left: 15px; margin-bottom: 15px;">Description</label>
+            <br>
+            <textarea name="description" placeholder="Type description here" rows="10" cols="60"
+                style="font-size: 15px; margin-left: 15px; margin-bottom: 10px;">{{ request.form['description'] }}</textarea>
+            <br>
+            <label for="rating" style="font-size: 15px; margin-left: 15px; margin-bottom: 10px;">Rating</label>
+            <select name="rating" id="rating">
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+            </select><br></br>
+            <input type="submit" value="Submit"
+                style="background-color: rgb(193, 149, 231);font-size: 15px;border-radius: 10px; margin-left: 15px; margin-bottom: 10px;"><br></br>
+        </form>
+    </div>
 </body>
 
 </html>
