@@ -150,24 +150,24 @@
     </div>
     <br>
     <div class="detail-facilities-customer-review-session">
-        <h4 id="detail-facilities-customer-review-header">Customer Review : 4 <img
+        <h4 id="detail-facilities-customer-review-header">Customer Review : {{ average_rating }} <img
                 src="{{ url_for('static', filename='star.png' ) }}" alt="star img"></img></h4>
+        {% if reviews != [] %}
+        {% for review in reviews %}
         <div class="detail-facilities-customer-review-session-detail-list">
-            <h5 style="font-size: 15px; margin-left: 10px; margin-bottom: -20px;">Username : Gongggg</h5>
-            <h6 style="font-size: 15px; margin-left: 10px; margin-bottom: 5px;"> Rating 4 <img
+            <h5 style="font-size: 15px; margin-left: 10px; margin-bottom: -20px;">Username : {{ review[2] }}</h5>
+            <h6 style="font-size: 15px; margin-left: 10px; margin-bottom: 5px;"> Rating {{ review[4] }} <img
                     src="{{ url_for('static', filename='star.png' ) }}" alt="star img"></img></h6>
-            <p style="font-size: 15px; margin-left: 10px; margin-bottom: 5px;"><b>Description :</b> This is the best
-                restaurant in warwick I have ever seen in my life haha</p><br>
+            <p style="font-size: 15px; margin-left: 10px; margin-bottom: 5px;"><b>Description :</b> {{ review[3] }}</p>
+            <br>
         </div>
-        <div class="detail-facilities-customer-review-session-detail-list">
-            <h5 style="font-size: 15px; margin-left: 10px; margin-bottom: -20px;">Username : Gongggg</h5>
-            <h6 style="font-size: 15px; margin-left: 10px; margin-bottom: 5px;"> Rating 4 <img
-                    src="{{ url_for('static', filename='star.png' ) }}" alt="star img"></img></h6>
-            <p style="font-size: 15px; margin-left: 10px; margin-bottom: 5px;"><b>Description :</b> This is the best
-                restaurant in warwick I have ever seen in my life haha</p><br>
-        </div>
+        {% endfor %}
+        {% else %}
+        <p style="font-size: 20px; margin-left: 10px; margin-bottom: 5px; color: red;"><b>There is no any review yet</b>
+        </p>
+        {% endif %}
         <h4 style="font-size: 25px; margin-left: 10px; margin-bottom: 10px;">Give Feedback</h4>
-        <form>
+        <form method="post">
             <label for="username" style="font-size: 15px; margin-left: 15px; margin-bottom: 15px;">Username</label>
             <br>
             <input type="text" name="username" placeholder="Name" value="{{ request.form['username'] }}"
