@@ -34,19 +34,18 @@ def facilities_landing():
         # type for returning to inform frontend to display "All Type" on the list screen
         type = "all"
 
-        # this query parameter (is_student_union) set as a default value for "none" dropdown
-        is_student_union = "99"
-
         # input from frontend dropdown (main.html)
         number_of_guest = int(request.form['number-of-guest'])
         open_day = request.form['open-day']
         open_time = int(request.form['open-time'])
+        is_student_union = request.form['student-union']
 
         # define variable which will apply on each search filter level
         result_after_guest=[]
         result_after_type=[]
         result_after_type_dup_validation = {}
         result_after_type_stage = []
+        result_after_time = []
 
         # final_result as a list of tuple that return the result list to frontend
         final_result = []
@@ -73,11 +72,19 @@ def facilities_landing():
                     if open_time != 99:
                         day_date_dict = json.loads(i[5])
                         if day_date_dict[open_day][0] <= open_time <= day_date_dict[open_day][1]:
-                                final_result.append(i)
+                                result_after_time.append(i)
                     else:
-                        final_result.append(i)
+                        result_after_time.append(i)
         else:
-            final_result = result_after_type
+            result_after_time = result_after_type
+
+        # filter student union (fourth query parameter)
+        if is_student_union != "99":
+            for i in result_after_time:
+                if is_student_union == i[7]:
+                    final_result.append(i)
+        else:
+            final_result = result_after_time
         conn.close()
 
         # for webpage result to render list screen with applyed search filter
@@ -130,6 +137,11 @@ def facilities_list(number_of_guest,open_day,open_time,is_student_union,type_id)
     # filter type (fifth query parameter)
     if type_id != 99:
         result_after_type = [i for i in result_after_guest if i[4] == type_id]
+        # Error Handling part in case that user input query parameter type_id that is not exist in the database and not equal to 99
+        try:
+            result = type[0][0]
+        except IndexError:
+            return "<h2>The last query parameter as type_id is not exist please help change by trying from 1 onwards</h2><br>for example : http://127.0.0.1:5000/facilities-list/99/99/99/99/1"
         type = type[0][0]
     else:
         type = "all"
@@ -166,6 +178,9 @@ def facilities_list(number_of_guest,open_day,open_time,is_student_union,type_id)
 
     # for rendering list.html webpage
     return render_template("list.html",dining_type = type, pre_select_guest = number_of_guest, pre_select_day = open_day, pre_select_time = open_time, pre_su = is_student_union, details = final_result)
+
+    # for validating response only
+    #return "<h1>{}</h1>".format(final_result)
 
 # Facilities details screen
 # Main functionalities as display detail of each facilities
@@ -206,8 +221,10 @@ def facilities_detail(profile_id):
     else:
         average_rating = 0
     conn.close()
+    # Error handling as query parameter profile_id not exist in tbl_dining_profile which is returned as empty list
+    if supps == []:
+        return "<h1>Query parameter profile_id not exist</h1><p>let's try with the new one from 1 onwards<br>for example http://127.0.0.1:5000/facilities-detail/1</p>"
     return render_template("detail.html", details = supps, reviews = reviews, average_rating = average_rating)
-
 if __name__ == "__main__":
     app.run(debug=True)
 
