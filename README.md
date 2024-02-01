@@ -11,9 +11,9 @@ A website which manage the warwick's dinning facilities covered these functional
 ---
 ## Prerequisite
 
-- VS Code with Python Extension
-- Flask (for running the backend API)
-- Python virtual environment (not require but recommend)
+- [VS Code with Python Extension](https://code.visualstudio.com/docs/languages/python)
+- [Flask (for running the backend API)](https://flask.palletsprojects.com/en/3.0.x/)
+- [Python virtual environment (not require but recommend)](https://code.visualstudio.com/docs/python/environments)
 ---
 ## Folder with file Structure (second level)
 
