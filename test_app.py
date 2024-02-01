@@ -2,7 +2,7 @@
 # but have to adjust and mock some of the parameter and value
 # chatGPT does not provide the correct data type and comprehensive test case enough
 
-""" expected value all from every endpoint is HTTP200 """
+""" expected value all from every endpoint to return HTTP200 """
 
 import pytest
 from app import app, get_db_connection
