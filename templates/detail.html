@@ -1,0 +1,222 @@
+<!--This the facilities detail screen-->
+<!--This page contain the main functionalities of align format for the facilities detail-->
+<!--Future implementation as Customer review function-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warwick's dining facilities detail</title>
+    <!--apply jinja template to link to css file-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+
+<body>
+    <!--apply flex box to make text and university logo on the same line with row order same with landing page-->
+    <div class="session-header">
+        <h3 class="text-header">Dining Service</h3>
+        <img src="{{ url_for('static', filename='warwick-logo.png') }}" class="logo-header"></img>
+    </div>
+    <!--apply hyperlink to landing and list page which default paramter same with landing page-->
+    <p><a href="{{ url_for('facilities_landing') }}">Landing Page</a> > <a
+            href="{{ url_for('facilities_list',number_of_guest=99,open_day='99',open_time=99,is_student_union='99',type_id=99) }}">List
+            of Cafe and Restaurant</a></p>
+    <h4 id="detail-facilities-header">{{ details[0][1] }}</h4>
+
+    <!--the detail part of facilities to apply flex box for the format-->
+    <div class="detail-facilities-session">
+        <div class="detail-facilities-left-component">
+            <img src="{{ url_for('static', filename= details[0][13] ) }}" alt="Img"></img>
+            <div class="detail-facilities-left-label">
+                <!--contact information : email and phone no-->
+                <div class="detail-facilities-detail-header">
+                    <h3><b>Contact Information</b></h3>
+                </div>
+                <div class="detail-facilities-detail-descripion">
+                    <p>Email : {{ details[0][2] }}</p>
+                    <p>Tel : {{ details[0][3] }}</p>
+                </div>
+                <!--Open time-->
+                <div class="detail-facilities-detail-header">
+                    <h3><b>Open Time</b></h3>
+                </div>
+                <!--apply autosecape to apply <br> to break line-->
+                <div class="detail-facilities-detail-descripion">
+                    {% autoescape false %}
+                    <p>{{ details[0][15] }}</p>
+                    {% endautoescape %}
+                </div>
+                <!--Location-->
+                <div class="detail-facilities-detail-header">
+                    <h3><b>Location</b></h3>
+                </div>
+                <div class="detail-facilities-detail-descripion">
+                    {% autoescape false %}
+                    <p>{{ details[0][4] }}</p>
+                    {% endautoescape %}
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-facilities-center-component">
+            <!--description-->
+            <div class="detail-facilities-detail-header">
+                <h3><b>About</b></h3>
+            </div>
+            <div class="detail-facilities-detail-descripion">
+                {% autoescape false %}
+                <p>{{ details[0][6] }}</p>
+                {% endautoescape %}
+            </div>
+            <!--Menu-->
+            <div class="detail-facilities-detail-header">
+                <h3><b>Menu</b></h3>
+            </div>
+            <div class="detail-facilities-detail-descripion">
+                {% autoescape false %}
+                <p>{{ details[0][7] }}</p>
+                {% endautoescape %}
+            </div>
+            <!--Offer-->
+            <div class="detail-facilities-detail-header">
+                <h3><b>Offer</b></h3>
+            </div>
+            <div class="detail-facilities-detail-descripion">
+                {% autoescape false %}
+                {% if details[0][8] is none %}
+                <p style="color:red;">There is no any offer for this facilities now.</p>
+                {% else %}
+                <p>{{ details[0][8] }}</p>
+                {% endif %}
+                {% endautoescape %}
+            </div>
+            <!--Christmas Special Offer-->
+            <div class="detail-facilities-detail-header">
+                <h3><b>Christmas Special</b></h3>
+            </div>
+            <div class="detail-facilities-detail-descripion">
+                {% autoescape false %}
+                {% if details[0][9] is none %}
+                <p style="color:red;">There is no any Christmas special for this facilities now.</p>
+                {% else %}
+                <p>{{ details[0][9] }}</p>
+                {% endif %}
+                {% endautoescape %}
+            </div>
+            <!--Fixture foe the sport bar only-->
+            <div class="detail-facilities-detail-header">
+                <h3><b>Fixture</b></h3>
+            </div>
+            <div class="detail-facilities-detail-descripion">
+                {% autoescape false %}
+                {% if details[0][10] is none %}
+                <p style="color:red;">The Sport fixture is only available for Sport bar.</p>
+                {% else %}
+                <p>{{ details[0][10] }}</p>
+                {% endif %}
+                {% endautoescape %}
+            </div>
+            <!--hyperlink for table booking-->
+            <div class="detail-facilities-detail-header">
+                <h3><b>Booking</b></h3>
+            </div>
+            <div class="detail-facilities-detail-descripion">
+                {% if details[0][11] is none %}
+                <p style="color:red;">This dinning facilities doesn't allow to book for spaces that allow only walk in
+                    customer.</p>
+                {% else %}
+                <p><a href="#">{{ details[0][11] }}</a></p>
+                {% endif %}
+            </div>
+            <!--hyperlink for food delivery-->
+            <div class="detail-facilities-detail-header">
+                <h3><b>Delivery</b></h3>
+            </div>
+            <div class="detail-facilities-detail-descripion">
+                {% if details[0][12] is none %}
+                <p style="color:red;">This dinning facilities doesn't have delivery service.</p>
+                {% else %}
+                <p><a href="#">{{ details[0][12] }}</a></p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="detail-facilities-right-component">
+            <div class="detail-facilities-detail-header">
+                <h3><b>Picture</b></h3>
+            </div>
+            <div class="detail-facilities-detail-descripion">
+                <!--default picture as university logo if there are no sup image 1,2,3-->
+                {% if (details[0][21] == none) and (details[0][22] == none) and (details[0][22] == none) == True %}
+                <img src="{{ url_for('static', filename='warwick-logo.png') }}" class="logo-header"></img>
+                {% endif %}
+
+                {% if details[0][21] != none %}
+                <img src="{{ url_for('static', filename= details[0][21] ) }}" alt="sup img 1"></img><br></br>
+                {% endif %}
+
+                {% if details[0][22] != none %}
+                <img src="{{ url_for('static', filename= details[0][22] ) }}" alt="sup img 2"></img><br></br>
+                {% endif %}
+
+                {% if details[0][23] != none %}
+                <img src="{{ url_for('static', filename= details[0][23] ) }}" alt="sup img 3"></img><br></br>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <!--Future Implementation part : Customer review-->
+    <div class="detail-facilities-customer-review-session">
+        <!--display average rating from backend-->
+        <!--Most of this part does not apply id or class as there are different on each element and not reuse for other pages-->
+
+        <!--Display all of customer review part-->
+        <h4 id="detail-facilities-customer-review-header">Customer Review : {{ average_rating }} <img
+                src="{{ url_for('static', filename='star.png' ) }}" alt="star img"></img></h4>
+        {% if reviews != [] %}
+        {% for review in reviews %}
+        <div class="detail-facilities-customer-review-session-detail-list">
+            <h5 style="font-size: 15px; margin-left: 10px; margin-bottom: -20px;">Username : {{ review[2] }}</h5>
+            <h6 style="font-size: 15px; margin-left: 10px; margin-bottom: 5px;"> Rating {{ review[4] }} <img
+                    src="{{ url_for('static', filename='star.png' ) }}" alt="star img"></img></h6>
+            <p style="font-size: 15px; margin-left: 10px; margin-bottom: 5px;"><b>Description :</b> {{ review[3] }}</p>
+            <br>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p style="font-size: 20px; margin-left: 10px; margin-bottom: 5px; color: red;"><b>There is no any review yet</b>
+        </p>
+        {% endif %}
+
+        <!--Submit customer review part : name, description, rating-->
+        <h4 style="font-size: 25px; margin-left: 10px; margin-bottom: 10px;">Give Feedback</h4>
+        <form method="post">
+            <label for="username" style="font-size: 15px; margin-left: 15px; margin-bottom: 15px;">Username</label>
+            <br>
+            <input type="text" name="username" placeholder="Name" value="{{ request.form['username'] }}"
+                style="font-size: 15px; margin-left: 15px; margin-bottom: 10px;"></input>
+            <br>
+            <label for="description" placeholder="Type description here"
+                style="font-size: 15px; margin-left: 15px; margin-bottom: 15px;">Description</label>
+            <br>
+            <textarea name="description" placeholder="Type description here" rows="10" cols="60"
+                style="font-size: 15px; margin-left: 15px; margin-bottom: 10px;">{{ request.form['description'] }}</textarea>
+            <br>
+            <label for="rating" style="font-size: 15px; margin-left: 15px; margin-bottom: 10px;">Rating</label>
+            <select name="rating" id="rating">
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+            </select><br></br>
+            <input type="submit" value="Submit"
+                style="background-color: rgb(193, 149, 231);font-size: 15px;border-radius: 10px; margin-left: 15px; margin-bottom: 10px;"><br></br>
+        </form>
+    </div>
+</body>
+
+</html>
