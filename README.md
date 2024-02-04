@@ -6,8 +6,8 @@ A website which manage the warwick's dinning facilities covered these functional
 3. Facilities landing page
 * Recommend facilities
 * Popular facilities
-* filter by type
-* dropdown filter
+* Filter by type
+* Dropdown filter
 ---
 ## Prerequisite
 
